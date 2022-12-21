@@ -2,7 +2,7 @@
 
 function inputCheck(input){
 
-  console.log(input);
+
   if(input !== 'yes' && input !== 'no'){
     alert('Please only enter yes or no.');
     throw new Error();
@@ -26,8 +26,6 @@ function lengthCheck(size){
   }
   return;
 }
-
-
 
 function generatePassword(){
   var password = [];
@@ -77,6 +75,7 @@ function generatePassword(){
       pushCharset(specialset);
   }
 
+  //shuffle algo from stackoverflow
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
@@ -98,25 +97,21 @@ function generatePassword(){
 
   //randomize
   shuffle(charset);
-  console.log(charset);
+
   //generate password of size isLength
   for(var i=0; i<isLength; i++){
     var a = Math.random() * ((charset.length) - 0) + 0;
     a = parseInt(a);
-    console.log("the value of a is " + a);
     password.push(charset[a]);
   }
 
   password = password.join('');
-  console.log(password);
+
 
 
   return password; //whatever is returned will be the complete password displayed on screen
 
 }
-
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -125,7 +120,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 }
