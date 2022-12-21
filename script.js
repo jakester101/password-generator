@@ -4,25 +4,25 @@ function inputCheck(input){
 
 
   if(input !== 'yes' && input !== 'no'){
-    alert('Please only enter yes or no.');
-    throw new Error();
+    alert('Please only enter yes or no (Case Sensitive).');
+    return 'nuts';
   }
   if(typeof input !== 'string'){
     alert('Invalid data type!');
-    throw new Error();
+    return 'nuts';
   }
   return;
 }
 
 function lengthCheck(size){
   if(size < 8 || size > 128){
-    alert('Length must fit constraints');
-    throw new Error();
+    alert('Length must fit constraints!');
+    return 'nuts';
   }
   
   if(isNaN(size)){
     alert('Invalid data type!');
-    throw new Error();
+    return 'nuts';
   }
   return;
 }
@@ -30,23 +30,42 @@ function lengthCheck(size){
 function generatePassword(){
   var password = [];
   var charset = [];
-  var isLength = prompt('How long is your password?','Enter a number between 8 and 128');
-  isLength = parseInt(isLength);  //convert the string to int for validation
-  lengthCheck(isLength);
-  var isUpper = prompt('Does this password contain uppercase?','Enter yes or no');
-  inputCheck(isUpper);
-  var isLower = prompt('Does this password contain lowercase?','Enter yes or no');
-  inputCheck(isLower);
-  var isNumbers = prompt('Does this password contain numbers?','Enter yes or no');
-  inputCheck(isNumbers);
-  var isSpecial = prompt('Does this password contain special characters?','Enter yes or no');
-  inputCheck(isSpecial);
 
-  //we can't have a password with no characters so:
-  if(isUpper === 'no' && isLower === 'no' && isNumbers === 'no' && isSpecial === 'no'){
-    alert('You must select at least one character set!');
-    throw new Error();
-  }
+  
+    do{
+      var isLength = prompt('How long is your password?','Enter a number between 8 and 128');
+      isLength = parseInt(isLength);  //convert the string to int for validation
+      var i = lengthCheck(isLength);
+    } while(i === 'nuts');
+    
+  do{
+    do{
+      var isUpper = prompt('Does this password contain uppercase?','Enter yes or no (Case sensitive).');
+      var i = inputCheck(isUpper);
+    } while (i === 'nuts');
+
+    do{
+      var isLower = prompt('Does this password contain lowercase?','Enter yes or no (Case sensitive).');
+      var i = inputCheck(isLower);
+    } while(i === 'nuts');
+
+    do{
+      var isNumbers = prompt('Does this password contain numbers?','Enter yes or no (Case sensitive).');
+      var i = inputCheck(isNumbers);
+    } while(i === 'nuts');
+
+    do{
+      var isSpecial = prompt('Does this password contain special characters?','Enter yes or no (Case sensitive).');
+      var i = inputCheck(isSpecial);
+    } while(i === 'nuts');
+
+    //we can't have a password with no characters so:
+    if(isUpper === 'no' && isLower === 'no' && isNumbers === 'no' && isSpecial === 'no'){
+      alert('You must select at least one character set!');
+      var i = 'nuts';
+    }
+  } while(i === 'nuts');
+
 
   //add charset to end of array
   function pushCharset(set){
@@ -106,8 +125,6 @@ function generatePassword(){
   }
 
   password = password.join('');
-
-
 
   return password; //whatever is returned will be the complete password displayed on screen
 
