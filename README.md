@@ -14,7 +14,7 @@ git clone git@github.com:jakester101/supreme-winner.git
 This project deploys as an [HTML website](https://jakester101.github.io/supreme-winner). Press the "Generate Password" button to receive prompts for password criteria. The length must be between 8 and 128, and the character sets must be selected with a "yes" or a "no", or the program will exit with an error message. 
 
 ### Preview
-![alt text](develop/screenshot.png)
+![alt text](/screenshot.png)
 
 ## Credits
 [Xander Rapstine](https://github.com/Xandromus)<br>
