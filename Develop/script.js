@@ -30,7 +30,7 @@ function lengthCheck(size){
 
 
 function generatePassword(){
-
+  var password = [];
   var charset = [];
   var isLength = prompt('How long is your password?','Enter a number between 8 and 128');
   isLength = parseInt(isLength);  //convert the string to int for validation
@@ -50,14 +50,16 @@ function generatePassword(){
     throw new Error();
   }
 
+  //add charset to end of array
   function pushCharset(set){
     for(var i = 0; i< set.length; i++){;
       charset.push(set[i]);
     }
 
+
   }
 
-  //begin generation based on parameters
+  //generate charset based on inputs
   if(isUpper === 'yes'){
     var upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     pushCharset(upper);
@@ -75,16 +77,41 @@ function generatePassword(){
       pushCharset(specialset);
   }
 
-  for(var i=0; i<charset.length; i++){
-    console.log(charset[i]);
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
   }
 
 
+  //randomize
+  shuffle(charset);
+  console.log(charset);
+  //generate password of size isLength
+  for(var i=0; i<isLength; i++){
+    var a = Math.random() * ((charset.length) - 0) + 0;
+    a = parseInt(a);
+    console.log("the value of a is " + a);
+    password.push(charset[a]);
+  }
+
+  password = password.join('');
+  console.log(password);
 
 
-
-
-  return charset; //whatever is returned will be the complete password displayed on screen
+  return password; //whatever is returned will be the complete password displayed on screen
 
 }
 
