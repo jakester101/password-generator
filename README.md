@@ -1,4 +1,4 @@
-# Portfolio Template
+# Password Generator
 
 ## Description
 This website generates a random passphrase given a critera of uppercase, lowercase, numbers, and special characters that the user selects when prompted by an alert. The input is validated by type and size constraints. This challenge serves as the first application of JavaScript.
@@ -17,7 +17,6 @@ This project deploys as an [HTML website](https://jakester101.github.io/supreme-
 ![alt text](develop/screenshot.png)
 
 ## Credits
+[Xander Rapstine](https://github.com/Xandromus)<br>
 [Jacob Hester](https://github.com/jakester101)
-
-
 ---
